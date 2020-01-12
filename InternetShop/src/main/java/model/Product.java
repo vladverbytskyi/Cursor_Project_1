@@ -86,5 +86,6 @@ public class Product {
 
     public void setInStock(boolean inStock) {
         this.inStock = inStock;
+
     }
 }
