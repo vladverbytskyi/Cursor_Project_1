@@ -5,7 +5,7 @@ import view.Menu;
 public class OrdersMenu implements Menu {
     @Override
     public void show() {
-
+        // з кошиком
     }
 
     @Override
@@ -15,11 +15,6 @@ public class OrdersMenu implements Menu {
 
     @Override
     public void back() {
-
-    }
-
-    @Override
-    public void showItems(String[] items) {
-
+        //з беком
     }
 }

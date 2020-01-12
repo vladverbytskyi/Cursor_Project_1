@@ -3,9 +3,11 @@ package view.impl;
 import view.Menu;
 
 public class ProductsMenu implements Menu {
+
     @Override
     public void show() {
-
+        System.out.println("Product");
+        // Повинен бути пов'язаний з списком продуктів
     }
 
     @Override
@@ -15,11 +17,6 @@ public class ProductsMenu implements Menu {
 
     @Override
     public void back() {
-
-    }
-
-    @Override
-    public void showItems(String[] items) {
-
+        // реалізація беку
     }
 }

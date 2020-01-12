@@ -2,10 +2,10 @@ package view.impl;
 
 import view.Menu;
 
-public class UserMainMenu implements Menu {
+public class AdminMenu implements Menu {
     @Override
     public void show() {
-        System.out.println("AHhaaa!!");
+
     }
 
     @Override

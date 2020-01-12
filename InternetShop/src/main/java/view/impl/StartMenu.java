@@ -7,14 +7,13 @@ import java.util.Scanner;
 public class StartMenu implements Menu {
 
     private RegistrationMenu regMenu = new RegistrationMenu();
-    private LoginUserMenu logUserMenu = new LoginUserMenu();
+    private LoginMenu logUserMenu = new LoginMenu();
     private Scanner scanner = new Scanner(System.in);
-    private String[] items = {"1.Login User", "2.Register", "3.Login Admin"};
+    private String[] items = {"1. Login", "2. Register", "0. Exit"};
 
     @Override
     public void show() {
         showItems(items);
-        System.out.println("0. Exit");
 
         while (true) {
             int choice = scanner.nextInt();
@@ -36,7 +35,6 @@ public class StartMenu implements Menu {
     @Override
     public void back() {
         //////// не знаю, що тут має бути
-
     }
 
     @Override

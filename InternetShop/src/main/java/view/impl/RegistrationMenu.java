@@ -1,15 +1,16 @@
 package view.impl;
 
-import service.RegisterService;
-import service.UserService;
+import service.RegisterServiceImpl;
 import view.Menu;
-
 import java.util.Scanner;
 
-public class RegistrationMenu implements Menu {
-    private RegisterService registerService;
+public class RegistrationMenu extends RegisterServiceImpl implements Menu {
+    private RegisterServiceImpl registerServiceImpl;
+    private LoginMenu loginMenu;
 
-    void registerMenu(Scanner scanner) {
+
+
+   public void registerMenu(Scanner scanner) {
         System.out.println("Name:");
         String name = scanner.nextLine();
 
@@ -22,8 +23,8 @@ public class RegistrationMenu implements Menu {
         System.out.println("Email:");
         String email = scanner.nextLine();
 
-        if (registerService.registration(name, login, password, email)) {
-            System.out.println("Тут щось має бути ))))))))  відкриватися наступне меню ");
+        if (registration(name, login, password, email)) {
+            loginMenu.show();
         }
         else {
             System.out.println("Введені дані некоректні");
