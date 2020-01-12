@@ -9,7 +9,12 @@ public class UserMainMenu implements Menu {
     }
 
     @Override
+    public void back() {
+
+    }
+
+    @Override
     public void exit() {
-        new view.impl.LoginMenu().show();
+        new StartMenu().show();
     }
 }
