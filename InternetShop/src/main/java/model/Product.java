@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 public class Product {
     private String name;
     private String brandName;
@@ -18,9 +20,6 @@ public class Product {
         this.description = description;
         this.price = price;
         this.inStock = inStock;
-    }
-
-    public Product() {
     }
 
     public Product(String name) {
@@ -86,6 +85,24 @@ public class Product {
 
     public void setInStock(boolean inStock) {
         this.inStock = inStock;
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Product)) return false;
+        Product product = (Product) o;
+        return isInStock() == product.isInStock() &&
+                Objects.equals(getName(), product.getName()) &&
+                Objects.equals(getBrandName(), product.getBrandName()) &&
+                Objects.equals(getType(), product.getType()) &&
+                Objects.equals(getProductId(), product.getProductId()) &&
+                Objects.equals(getDescription(), product.getDescription()) &&
+                Objects.equals(getPrice(), product.getPrice());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getBrandName(), getType(), getProductId(), getDescription(), getPrice(), isInStock());
     }
 }
