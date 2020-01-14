@@ -18,7 +18,6 @@ public class LoginMenu implements Menu {
 
         scanner = new Scanner(System.in);
 
-
         while(true)
         {
           int choice =  scanner.nextInt();
@@ -26,10 +25,13 @@ public class LoginMenu implements Menu {
           switch (choice)
           {
               case 1 :
-                  loginSubMenu(scanner); break;
+                  loginSubMenu(scanner);
+                  break;
               case 2 :
-                  loginSubMenu(scanner); break;
-              case 0 : exit(); break;
+                  loginSubMenu(scanner);
+                  break;
+              case 0 : exit();
+              break;
           }
         }
     }
