@@ -8,9 +8,8 @@ import java.util.Map;
  * Created by Igor on 10/8/2019.
  */
 public interface UserDao {
-    void setUserIntoDatabase(User user); //create
-    User getUserByName(String name); //read
-    Map<String, User> getAll();
-    void checkUserInDatabase(User user); //update
-    void deleteUserFromDatabase(User user); //delete
+    void createUserInDatabase(User user);
+    User getUserByName(String name);
+    void updateUserInDatabase(User user);
+    void deleteUserFromDatabase(User user);
 }

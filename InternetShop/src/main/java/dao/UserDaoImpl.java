@@ -7,10 +7,10 @@ import java.util.Map;
 
 public class UserDaoImpl implements UserDao {
 
-    private Map<String, User> users = new HashMap<>();
+    private static Map<String, User> users = new HashMap<>();
 
     @Override
-    public void setUserIntoDatabase(User user) {
+    public void createUserInDatabase(User user) {
         users.put(user.getName(), user);
         System.out.println("User " + user.getName() + " added to the database");
     }
@@ -21,17 +21,8 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public Map<String, User> getAll() {
-        return users;
-    }
-
-    @Override
-    public void checkUserInDatabase(User user) {
-        if (users.containsKey(user.getName())) {
-            System.out.println("User " + user.getName() + " exists.");
-        } else {
-            System.out.println("User " + user.getName() + "doesn't exist.");
-        }
+    public void updateUserInDatabase(User user) {
+        users.put(user.getName(), user);
     }
 
     @Override
