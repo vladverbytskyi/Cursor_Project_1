@@ -15,7 +15,7 @@ public class ProductDaoImpl implements ProductDao{
     @Override
     public void createProductInDatabase(Product product) {
         products.put(product.getProductId(), product);
-        System.out.println("User " + product.getName() + " added to the database");
+        System.out.println("Product " + product.getName() + " added to the database");
     }
 
     @Override
