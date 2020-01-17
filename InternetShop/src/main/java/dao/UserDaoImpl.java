@@ -6,18 +6,28 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UserDaoImpl implements UserDao {
-    private Map<String, User> usersList = new HashMap<>();
+
+    private static Map<String, User> users = new HashMap<>();
 
     @Override
-    public void setUserIntoDatabase(User user) {
+    public void createUserInDatabase(User user) {
+        users.put(user.getName(), user);
+        System.out.println("User " + user.getName() + " added to the database");
     }
 
     @Override
-    public User getUserFromDatabase() {
-        return null;
+    public User getUserByName(String name) {
+        return users.get(name);
     }
 
     @Override
-    public void checkUserInDatabase(User user) {
+    public void updateUserInDatabase(User user) {
+        users.put(user.getName(), user);
+    }
+
+    @Override
+    public void deleteUserFromDatabase(User user) {
+        users.remove(user.getName(), user);
+        System.out.println("User " + user.getName() + " deleted from database");
     }
 }
