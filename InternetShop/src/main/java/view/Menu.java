@@ -6,7 +6,7 @@ public interface Menu {
     void back();
 
     default void exit() {
-     System.exit(0);
+
     }
 
     default void showItems(String[] items) {

@@ -2,28 +2,27 @@ package view.impl;
 
 import service.RegisterServiceImpl;
 import view.Menu;
+
 import java.util.Scanner;
 
 public class RegistrationMenu extends RegisterServiceImpl implements Menu {
     private RegisterServiceImpl registerServiceImpl;
-    private LoginMenu loginMenu;
+    private LoginMenu loginMenu = new LoginMenu();
 
-
-
-   public void registerMenu(Scanner scanner) {
+    public void registerMenu(Scanner scanner) {
         System.out.println("Name:");
-        String name = scanner.nextLine();
+        String name = scanner.next();
 
         System.out.println("Login:");
-        String login = scanner.nextLine();
+        String login = scanner.next();
 
         System.out.println("Password:");
-        String password = scanner.nextLine();
+        String password = scanner.next();
 
         System.out.println("Email:");
-        String email = scanner.nextLine();
+        String email = scanner.next();
 
-        if (registration(name, login, password, email)) {
+        if (true/*registration(name, login, password, email)*/) {
             loginMenu.show();
         }
         else {
@@ -35,7 +34,6 @@ public class RegistrationMenu extends RegisterServiceImpl implements Menu {
     @Override
     public void show() {
         System.out.println("Show");
-
     }
 
     @Override

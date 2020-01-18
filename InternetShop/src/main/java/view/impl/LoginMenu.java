@@ -6,20 +6,21 @@ import view.Menu;
 import java.util.Scanner;
 
 public class LoginMenu implements Menu {
-    private UserServiceImpl userServiceImpl;
-    private ProductsMenu productsMenu;
-    private AdminMenu adminMenu;
-    private Scanner scanner;
+    private UserMainMenu userMainMenu = new UserMainMenu();
+    private UserServiceImpl userServiceImpl = new UserServiceImpl();
+    private Scanner scanner = new Scanner(System.in);
 
-   public void loginUserMenu(Scanner scanner) {
+
+
+    public void loginMenu(Scanner scanner) {
         System.out.println("Input login:");
         String login = scanner.nextLine();
 
         System.out.println("Input password:");
         String password = scanner.nextLine();
 
-        if (userServiceImpl.login(login, password)) {
-            productsMenu.show();
+       if (userServiceImpl.login(login, password)) {
+           userMainMenu.show();
         }
 ////        else if (userServiceImpl.login(admin, admin)) {
 ////            adminMenu.show();
@@ -33,8 +34,10 @@ public class LoginMenu implements Menu {
     @Override
     public void show() {
         System.out.println("Authorization");
-        loginUserMenu(scanner);
+        loginMenu(scanner);
     }
+
+
 
     @Override
     public void back() {

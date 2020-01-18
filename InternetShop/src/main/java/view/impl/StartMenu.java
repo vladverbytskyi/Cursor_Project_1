@@ -20,7 +20,7 @@ public class StartMenu implements Menu {
 
             switch (choice) {
                 case 1:
-                    logUserMenu.loginUserMenu(scanner);
+                    logUserMenu.loginMenu(scanner);
                     break;
                 case 2:
                     regMenu.registerMenu(scanner);
