@@ -1,15 +1,20 @@
 package dao;
 
 import model.Product;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class ProductDaoImpl implements ProductDao{
+
+public class ProductDaoImpl implements ProductDao {
 
     private static Map<Integer, Product> products = new HashMap<>();
 
     @Override
-    public void getAllProducts() {
+    public List<Product> getAllProducts() {
+        return new ArrayList(products.values());
     }
 
     @Override
