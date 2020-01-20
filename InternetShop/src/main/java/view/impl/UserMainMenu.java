@@ -11,7 +11,7 @@ public class UserMainMenu implements Menu {
     private OrderCheckoutMenu orderCheckoutMenu = new OrderCheckoutMenu();
     private MyAccountMenu myAccountMenu = new MyAccountMenu();
     private Scanner scanner = new Scanner(System.in);
-    private String[] itemsUserMainMenu = {"1. Product list", "2. Search", "3. Add specific product to order", "4. Order checkout", "5. My account", "0. Exit"};
+    private String[] itemsUserMainMenu = {"1. Product list", "2. Search", "3. Add specific product to order", "4. Order checkout", "5. My account", "6. Back", "0. Exit"};
 
 
     @Override
@@ -37,6 +37,8 @@ public class UserMainMenu implements Menu {
                 case 5:
                     myAccountMenu.show();
                     break;
+                case 6:
+                    back();
                 case 0:
                     exit();
                     break;

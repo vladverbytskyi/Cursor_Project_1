@@ -10,7 +10,6 @@ public class User {
     private String password;
     private String email;
     private Bucket bucket;
-
     private List<Order> orders = new ArrayList<>();
 
     public User() {

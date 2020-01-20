@@ -2,15 +2,12 @@ package view.impl;
 
 import service.UserServiceImpl;
 import view.Menu;
-
 import java.util.Scanner;
 
 public class LoginMenu implements Menu {
     private UserMainMenu userMainMenu = new UserMainMenu();
     private UserServiceImpl userServiceImpl = new UserServiceImpl();
     private Scanner scanner = new Scanner(System.in);
-
-
 
     public void loginMenu(Scanner scanner) {
         System.out.println("Input login:");
@@ -22,8 +19,8 @@ public class LoginMenu implements Menu {
        if (userServiceImpl.login(login, password)) {
            userMainMenu.show();
         }
-////        else if (userServiceImpl.login(admin, admin)) {
-////            adminMenu.show();
+//        else if (userServiceImpl.login(admin, admin)) {
+//            adminMenu.show();
 //        }
         else {
             System.out.println("Wrong username/pasword");
