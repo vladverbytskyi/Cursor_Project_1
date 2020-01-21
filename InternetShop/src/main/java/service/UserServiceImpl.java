@@ -15,4 +15,17 @@ public class UserServiceImpl implements UserService {
         }
         return isCreateUser;
     }
+
+    @Override
+    public boolean registration(String name, String login, String password, String email) {
+        boolean isCreateUser = false;
+        UserDao userDao = new UserDaoImpl();
+        User user = new User(name,login,password,email);
+        User userWithDatabase = userDao.getUserByLogin(user.getLogin());
+        if (userWithDatabase == null){
+            userDao.createUserInDatabase(user);
+            isCreateUser = true;
+        }
+        return isCreateUser;
+    }
 }
