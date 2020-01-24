@@ -13,7 +13,6 @@ public class UserMainMenu implements Menu {
     private Scanner scanner = new Scanner(System.in);
     private String[] itemsUserMainMenu = {"1. Product list", "2. Search", "3. Add specific product to order", "4. Order checkout", "5. My account", "6. Back", "0. Exit"};
 
-
     @Override
     public void show() {
         showItems(itemsUserMainMenu);

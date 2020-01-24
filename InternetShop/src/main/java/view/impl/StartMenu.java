@@ -1,7 +1,6 @@
 package view.impl;
 
 import view.Menu;
-
 import java.util.Scanner;
 
 public class StartMenu implements Menu {
