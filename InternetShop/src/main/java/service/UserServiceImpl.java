@@ -10,7 +10,7 @@ public class UserServiceImpl implements UserService {
         boolean isCreateUser = false;
         UserDao userDao = new UserDaoImpl();
         User userWithDatabase = userDao.getUserByLogin(login);
-        if (userWithDatabase.getLogin().equals(login) && userWithDatabase.getPassword().equals(password)){
+        if (userWithDatabase != null && userWithDatabase.getLogin().equals(login) && userWithDatabase.getPassword().equals(password)){
             isCreateUser = true;
         }
         return isCreateUser;

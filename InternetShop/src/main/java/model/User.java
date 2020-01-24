@@ -1,24 +1,33 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class User {
     private String name;
-    private Integer id;
     private String login;
     private String password;
     private String email;
     private Bucket bucket;
-    private Order orders;
+    private Boolean statusOrder;
+    private ArrayList<Product> orders;
 
-    public User(String name, Integer id, String login, String password, String email) {
+    public User(String name, String login, String password, String email) {
         this.name = name;
-        this.id = id;
         this.login = login;
         this.password = password;
         this.email = email;
         this.bucket = new Bucket();
-        this.orders = new Order();
+        this.orders = new ArrayList<>();
+    }
+
+    public Boolean getStatusOrder() {
+        return statusOrder;
+    }
+
+    public void setStatusOrder(Boolean statusOrder) {
+        this.statusOrder = statusOrder;
     }
 
     public String getName() {
@@ -27,14 +36,6 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getLogin() {
@@ -69,12 +70,12 @@ public class User {
         this.bucket = bucket;
     }
 
-    public Order getOrders() {
-        return orders;
+    public List<Product> getOrders() {
+        return new ArrayList<>(this.orders);
     }
 
-    public void setOrders(Order orders) {
-        this.orders = orders;
+    public void setOrders(Product item) {
+        this.orders.add(item);
     }
 
     @Override
@@ -83,7 +84,6 @@ public class User {
         if (!(o instanceof User)) return false;
         User user = (User) o;
         return Objects.equals(getName(), user.getName()) &&
-                Objects.equals(getId(), user.getId()) &&
                 Objects.equals(getLogin(), user.getLogin()) &&
                 Objects.equals(getPassword(), user.getPassword()) &&
                 Objects.equals(getEmail(), user.getEmail()) &&
@@ -93,7 +93,7 @@ public class User {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName(), getId(), getLogin(), getPassword(), getEmail(), getBucket(), getOrders());
+        return Objects.hash(getName(), getLogin(), getPassword(), getEmail(), getBucket(), getOrders());
     }
 }
 
