@@ -9,6 +9,10 @@ public class UserDaoImpl implements UserDao {
 
     private static Map<String, User> users = new HashMap<>();
 
+    static {
+        users.put("sudo", new User("sudo", "sudo", "sudo", "sudo@com.com")); //FIXME testing only ,  remove in prod
+    }
+
     @Override
     public void createUserInDatabase(User user) {
         users.put(user.getName(), user);

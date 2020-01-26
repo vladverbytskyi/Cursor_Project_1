@@ -1,5 +1,6 @@
 package model;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 public class Product {
@@ -8,11 +9,12 @@ public class Product {
     private String type;
     private Integer productId;
     private String description;
-    private Integer price;
+    private BigDecimal price;
     private boolean inStock;
+    private int amountInStock;
 
     public Product(String name, String brandName, String type, Integer productId,
-                   String description, Integer price, boolean inStock) {
+                   String description, BigDecimal price, boolean inStock, int amountInStock) {
         this.name = name;
         this.brandName = brandName;
         this.type = type;
@@ -20,6 +22,7 @@ public class Product {
         this.description = description;
         this.price = price;
         this.inStock = inStock;
+        this.amountInStock = amountInStock;
     }
 
     public Product(String name) {
@@ -29,6 +32,11 @@ public class Product {
     public Product(String name, String brandName) {
         this.name = name;
         this.brandName = brandName;
+    }
+
+    public Product(String name, int amountInStock) {
+        this.name = name;
+        this.amountInStock = amountInStock;
     }
 
     public String getName() {
@@ -71,11 +79,11 @@ public class Product {
         this.description = description;
     }
 
-    public Integer getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
@@ -104,5 +112,18 @@ public class Product {
     @Override
     public int hashCode() {
         return Objects.hash(getName(), getBrandName(), getType(), getProductId(), getDescription(), getPrice(), isInStock());
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "name='" + name + '\'' +
+                ", brandName='" + brandName + '\'' +
+                ", type='" + type + '\'' +
+                ", productId=" + productId +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", inStock=" + inStock +
+                '}';
     }
 }

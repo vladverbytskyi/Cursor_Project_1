@@ -5,6 +5,12 @@ import service.ProductService;
 
 import java.util.List;
 
+import dao.ProductDao;
+import dao.ProductDaoImpl;
+import model.Product;
+
+import java.util.List;
+
 public class ProductServiceImpl implements ProductService {
     //todo add impl
     @Override

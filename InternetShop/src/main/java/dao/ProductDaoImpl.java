@@ -11,6 +11,12 @@ public class ProductDaoImpl implements ProductDao{
 
     private static Map<Integer, Product> products = new HashMap<>();
 
+    static {
+        products.put(1, new Product("soap", 3));
+        products.put(2, new Product("bread1", 5));
+        products.put(3, new Product("bread2", 15));
+    }
+
     @Override
     public List<Product> getAllProducts() {
         return new ArrayList<>(products.values());
