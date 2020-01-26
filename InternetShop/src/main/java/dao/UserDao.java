@@ -12,4 +12,6 @@ public interface UserDao {
     User getUserByLogin(String login);
     void updateUserInDatabase(User user);
     void deleteUserFromDatabase(User user);
+
+    User getUserByLogin(String login);
 }

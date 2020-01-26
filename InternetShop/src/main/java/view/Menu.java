@@ -5,6 +5,8 @@ public interface Menu {
     void back();
     void exit();
 
+    void back();
+
     default void showItems(String[] items) {
         for (String item : items) {
             System.out.println("-------------");
