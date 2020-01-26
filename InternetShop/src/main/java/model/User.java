@@ -4,14 +4,13 @@ import java.util.Objects;
 
 public class User {
     private String name;
-    private Integer id;
     private String login;
     private String password;
     private String email;
     private Bucket bucket;
     private Order orders;
 
-    public User(String name, Integer id, String login, String password, String email) {
+    public User(String name,  String login, String password, String email) {
         this.name = name;
         this.id = id;
         this.login = login;

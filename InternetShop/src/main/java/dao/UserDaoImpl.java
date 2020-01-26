@@ -30,4 +30,9 @@ public class UserDaoImpl implements UserDao {
         users.remove(user.getName(), user);
         System.out.println("User " + user.getName() + " deleted from database");
     }
+
+    @Override
+    public User getUserByLogin(String login) {
+        return users.get(login);
+    }
 }
