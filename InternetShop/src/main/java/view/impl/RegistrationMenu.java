@@ -46,10 +46,6 @@ public class RegistrationMenu implements Menu {
         System.exit(0);
     }
 
-    @Override
-    public void back() {
-
-    }
 
     @Override
     public void showItems(String[] items) {

@@ -11,6 +11,10 @@ public class UserDaoImpl implements UserDao {
 
     private static Map<String, User> users = new HashMap<>();
 
+    static {
+        users.put("sudo", new User("sudo", "sudo", "sudo", "sudo@com.com")); //FIXME testing only ,  remove in prod
+    }
+
     @Override
     public List<User> getAllUsers() {
         return new ArrayList(users.values());
@@ -36,10 +40,5 @@ public class UserDaoImpl implements UserDao {
     public void deleteUserFromDatabase(User user) {
         users.remove(user.getLogin(), user);
         System.out.println("User " + user.getLogin() + " deleted from database");
-    }
-
-    @Override
-    public User getUserByLogin(String login) {
-        return users.get(login);
     }
 }

@@ -1,13 +1,15 @@
 package view.impl;
 
+import service.UserService;
 import service.UserServiceImpl;
 import view.Menu;
+
 import java.util.Scanner;
 
 public class LoginMenu implements Menu {
     public static String USER_LOGIN = null;
 
-    private UserServiceImpl userService = new UserServiceImpl();
+    private UserService userService = new UserServiceImpl();
     private Scanner scanner = new Scanner(System.in);
 
     public void loginMenu(Scanner scanner) {
@@ -18,8 +20,8 @@ public class LoginMenu implements Menu {
         String password = scanner.nextLine();
 
         if (userService.login(login, password)) {
+            USER_LOGIN = login;
             StaticMenu.userMainMenu.show();
-            USER_LOGIN=login;
         } else if (login.equals("admin") && password.equals("admin")) {
            StaticMenu.adminMenu.show();
         } else {

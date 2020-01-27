@@ -2,6 +2,7 @@ package view.impl;
 
 import dao.UserDao;
 import dao.UserDaoImpl;
+import model.Order;
 import model.Product;
 import model.User;
 import view.Menu;
@@ -12,7 +13,7 @@ import java.util.Scanner;
 
 public class MyOrderMenu implements Menu {
     private UserDao userDao = new UserDaoImpl();
-    private String [] itemsOrderMenu = {"1. Show my orders","2. Buy", "3. Back", "0. Exit"};
+    private String [] itemsOrderMenu = {"1. Show my orders", "9. Back", "0. Exit"};
     private Scanner scanner = new Scanner(System.in);
     private Boolean isWorkLoop;
     @Override
@@ -26,10 +27,7 @@ public class MyOrderMenu implements Menu {
                 case 1:
                     printUserOrder();
                     break;
-                case 2:
-                    buyProducts();
-                    break;
-                case 3:
+                case 9:
                     back();
                     break;
                 case 0:
@@ -49,28 +47,18 @@ public class MyOrderMenu implements Menu {
         System.exit(0);
     }
 
-    private void buyProducts() {
-        User userWithDatabase = userDao.getUserByLogin(LoginMenu.USER_LOGIN);
-        if (userWithDatabase == null){
-            System.out.println("Doesn't find user with this nick");
-        }else if(userWithDatabase.getStatusOrder()){
-            userWithDatabase.getOrders().clear();
-            System.out.println("You successfully bought all products");
-        } else{
-            System.out.println("Admin doesn't confirm your order");
-        }
-    }
-
     private void printUserOrder(){
         User userWithDatabase = userDao.getUserByLogin(LoginMenu.USER_LOGIN);
+        System.out.println(LoginMenu.USER_LOGIN);
         if (userWithDatabase == null){
             System.out.println("Doesn't find user with this nick");
         }else if(userWithDatabase.getOrders() == null){
             System.out.println("Order List is empty");
         } else{
-            List<Product> userOrders = new ArrayList<>(userWithDatabase.getOrders());
-            for(Product item : userOrders){
+            List<Order> userOrders = new ArrayList<>(userWithDatabase.getOrders());
+            for(Order item : userOrders){
                 System.out.println(item);
+                item.printAllItem();
             }
         }
     }

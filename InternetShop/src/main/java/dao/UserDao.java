@@ -13,5 +13,4 @@ public interface UserDao {
     void updateUserInDatabase(User user);
     void deleteUserFromDatabase(User user);
 
-    User getUserByLogin(String login);
 }
