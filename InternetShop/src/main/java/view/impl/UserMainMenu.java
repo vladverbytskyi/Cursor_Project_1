@@ -55,7 +55,6 @@ public class UserMainMenu implements Menu {
 
     @Override
     public void back() {
-
     }
 
     @Override

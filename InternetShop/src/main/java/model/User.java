@@ -22,14 +22,6 @@ public class User {
         this.password = password;
         this.email = email;
         this.orders = new ArrayList<>();
-        //this.money = money;
-
-       // Product product = new Product("soap", 3);
-       // Order.PositionItem positionItem = new Order.PositionItem(product,7);
-       // List<Order.PositionItem> m = new ArrayList<>();
-       /// m.add(positionItem);
-       // Order order = new Order(m,new User(name,login,password,email));
-       // orders.add(order);
     }
 
     public Boolean getStatusOrder() {

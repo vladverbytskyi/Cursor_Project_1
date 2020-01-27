@@ -8,7 +8,6 @@ import java.util.Scanner;
 
 public class LoginMenu implements Menu {
     public static String USER_LOGIN = null;
-
     private UserService userService = new UserServiceImpl();
     private Scanner scanner = new Scanner(System.in);
 
@@ -24,6 +23,7 @@ public class LoginMenu implements Menu {
             StaticMenu.userMainMenu.show();
         } else if (login.equals("admin") && password.equals("admin")) {
            StaticMenu.adminMenu.show();
+
         } else {
             System.out.println("Wrong username/pasword");
             show();
