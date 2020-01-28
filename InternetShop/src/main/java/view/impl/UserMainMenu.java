@@ -22,7 +22,7 @@ public class UserMainMenu implements Menu {
                     StaticMenu.productsMenu.show();
                     break;
                 case 2:
-                   StaticMenu.searchMenu.show();
+                    StaticMenu.searchMenu.show();
                     break;
                 case 3:
                     StaticMenu.specificProductMenu.show();

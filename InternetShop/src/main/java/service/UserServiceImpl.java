@@ -23,7 +23,6 @@ public class UserServiceImpl implements UserService {
         return isCreateUser;
     }
 
-
     public boolean registration(String name, String login, String password, String email) {
         boolean isCreateUser = false;
         User user = new User(name, login, password, email);

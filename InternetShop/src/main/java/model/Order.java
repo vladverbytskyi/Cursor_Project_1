@@ -2,6 +2,7 @@ package model;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+
 import java.util.List;
 
 public class Order {
@@ -71,7 +72,6 @@ public class Order {
             this.amount = amount;
         }
 
-
         public Product getItem() {
             return item;
         }
@@ -84,7 +84,7 @@ public class Order {
             return item != null ? item.getPrice().multiply(BigDecimal.valueOf(amount)) : BigDecimal.ZERO;
         }
     }
-
+  
     @Override
     public String toString() {
         return "\nOrder id = " + id + ", Owner = " + user.getName() + ", statusOrder = " + statusOrder + '}';
