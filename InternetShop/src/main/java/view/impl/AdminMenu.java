@@ -10,7 +10,7 @@ public class AdminMenu implements Menu {
 
     @Override
     public void back() {
-
+        StaticMenu.startMenu.show();
     }
 
     @Override

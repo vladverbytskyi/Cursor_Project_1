@@ -18,11 +18,11 @@ public class SearchMenu implements Menu {
 
     @Override
     public void back() {
-
+        StaticMenu.userMainMenu.show();
     }
 
     @Override
     public void exit() {
-
+        System.exit(0);
     }
 }

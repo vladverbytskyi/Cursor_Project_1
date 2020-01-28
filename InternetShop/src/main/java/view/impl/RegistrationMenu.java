@@ -38,7 +38,7 @@ public class RegistrationMenu implements Menu {
 
     @Override
     public void back() {
-
+        StaticMenu.startMenu.show();
     }
 
     @Override

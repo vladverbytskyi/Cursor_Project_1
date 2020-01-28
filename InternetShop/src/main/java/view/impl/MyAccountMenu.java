@@ -11,6 +11,7 @@ public class MyAccountMenu implements Menu {
 
     @Override
     public void back() {
+        StaticMenu.userMainMenu.show();
     }
 
     @Override

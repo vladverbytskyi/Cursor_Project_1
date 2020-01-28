@@ -5,10 +5,8 @@ import view.Menu;
 import java.util.Scanner;
 
 public class StartMenu implements Menu {
-    private RegistrationMenu regMenu = new RegistrationMenu();
-    private LoginMenu logUserMenu = new LoginMenu();
     private Scanner scanner = new Scanner(System.in);
-    private String[] items = {"1. Login", "2. Register", "0. Exit"};
+    private String[] items = {"1. Login", "2. Register","9. Register", "0. Exit"};
 
     @Override
     public void show() {
@@ -19,10 +17,13 @@ public class StartMenu implements Menu {
 
             switch (choice) {
                 case 1:
-                    logUserMenu.loginMenu(scanner);
+                    StaticMenu.loginMenu.loginMenu(scanner);
                     break;
                 case 2:
-                    regMenu.registerMenu(scanner);
+                    StaticMenu.registrationMenu.registerMenu(scanner);
+                    break;
+                case 9:
+                    back();
                     break;
                 case 0:
                     exit();
@@ -33,7 +34,7 @@ public class StartMenu implements Menu {
 
     @Override
     public void back() {
-        //////// не знаю, що тут має бути
+        System.out.println("No previous page");
     }
 
     @Override

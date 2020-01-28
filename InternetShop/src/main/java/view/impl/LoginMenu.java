@@ -38,7 +38,7 @@ public class LoginMenu implements Menu {
 
     @Override
     public void back() {
-        // повинен повертатися на крок назад
+        StaticMenu.startMenu.show();
     }
 
     @Override

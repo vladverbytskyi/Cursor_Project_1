@@ -6,13 +6,6 @@ import java.util.Scanner;
 
 public class UserMainMenu implements Menu {
 
-    //todo Use menus from static menu
-    private ProductsMenu productsMenu = new ProductsMenu();
-//    private SearchMenu searchMenu = new SearchMenu();
-//    private SpecificProductMenu specificProductMenu = new SpecificProductMenu();
-//    private OrderCheckoutMenu orderCheckoutMenu = new OrderCheckoutMenu();
-//    private MyAccountMenu myAccountMenu = new MyAccountMenu();
-//    private MyOrderMenu myOrderMenu = new MyOrderMenu();
     private Scanner scanner = new Scanner(System.in);
     private String[] itemsUserMainMenu = {"1. Product list", "2. Search", "3. Add specific product to order", "4. Order checkout", "5. My account", "6. Back", "7. My Order", "0. Exit"};
 
@@ -26,19 +19,19 @@ public class UserMainMenu implements Menu {
 
             switch (choice) {
                 case 1:
-                    productsMenu.show();
+                    StaticMenu.productsMenu.show();
                     break;
                 case 2:
-                   // searchMenu.show();
+                   StaticMenu.searchMenu.show();
                     break;
                 case 3:
-                  //  specificProductMenu.show();
+                    StaticMenu.specificProductMenu.show();
                     break;
                 case 4:
-                  //  orderCheckoutMenu.show();
+                    StaticMenu.orderCheckoutMenu.show();
                     break;
                 case 5:
-                  //  myAccountMenu.show();
+                     StaticMenu.myAccountMenu.show();
                     break;
                 case 7:
                     StaticMenu.myOrderMenu.show();
@@ -55,7 +48,7 @@ public class UserMainMenu implements Menu {
 
     @Override
     public void back() {
-
+        StaticMenu.startMenu.show();
     }
 
     @Override

@@ -39,7 +39,7 @@ public class Order {
     }
 
     public void printAllItem(){
-        List<PositionItem> m = new ArrayList<>(getItemList());
+        List<PositionItem> m = getItemList();
         for (PositionItem s : m){
             String k = "Product: "+ s.item.getName() +
                     ", Brand= " + s.item.getBrandName() +
