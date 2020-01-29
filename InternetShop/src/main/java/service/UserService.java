@@ -8,4 +8,5 @@ public interface UserService {
      * @return outcome of login - success or not
      */
     boolean login(String username, String password);
+    boolean registration(String name, String login, String password, String email);
 }

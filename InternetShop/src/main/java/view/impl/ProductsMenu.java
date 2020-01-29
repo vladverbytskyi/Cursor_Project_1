@@ -92,6 +92,6 @@ public class ProductsMenu implements Menu {
 
     @Override
     public void back() {
-        // реалізація беку
+        StaticMenu.userMainMenu.show();
     }
 }

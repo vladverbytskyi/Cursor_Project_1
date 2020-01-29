@@ -14,31 +14,16 @@ public class Product {
     private int amountInStock;
 
     public Product(String name, String brandName, String type, Integer productId,
-                   String description, BigDecimal price, boolean inStock, int amountInStock) {
+                   String description, BigDecimal price, int amountInStock) {
         this.name = name;
         this.brandName = brandName;
         this.type = type;
         this.productId = productId;
         this.description = description;
         this.price = price;
-        this.inStock = inStock;
         this.amountInStock = amountInStock;
     }
-
-    public Product(String name) {
-        this.name = name;
-    }
-
-    public Product(String name, String brandName) {
-        this.name = name;
-        this.brandName = brandName;
-    }
-
-    public Product(String name, int amountInStock) {
-        this.name = name;
-        this.amountInStock = amountInStock;
-    }
-
+  
     public String getName() {
         return name;
     }
@@ -116,14 +101,10 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
-                "name='" + name + '\'' +
-                ", brandName='" + brandName + '\'' +
-                ", type='" + type + '\'' +
-                ", productId=" + productId +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                ", inStock=" + inStock +
-                '}';
+        return "Product: "+ name +
+                ", Brand= " + brandName +
+                ", Type='" + type +
+                ", Description='" + description +
+                ", price=" + price ;
     }
 }

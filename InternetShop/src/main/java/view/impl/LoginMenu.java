@@ -8,7 +8,6 @@ import java.util.Scanner;
 
 public class LoginMenu implements Menu {
     public static String USER_LOGIN = null;
-
     private UserService userService = new UserServiceImpl();
     private Scanner scanner = new Scanner(System.in);
 
@@ -20,10 +19,11 @@ public class LoginMenu implements Menu {
         String password = scanner.nextLine();
 
         if (userService.login(login, password)) {
-            //StaticMenu.userMainMenu.show();
             USER_LOGIN = login;
+            StaticMenu.userMainMenu.show();
         } else if (login.equals("admin") && password.equals("admin")) {
-         //   StaticMenu.adminMenu.show();
+           StaticMenu.adminMenu.show();
+
         } else {
             System.out.println("Wrong username/pasword");
             show();
@@ -38,7 +38,7 @@ public class LoginMenu implements Menu {
 
     @Override
     public void back() {
-        // повинен повертатися на крок назад
+        StaticMenu.startMenu.show();
     }
 
     @Override

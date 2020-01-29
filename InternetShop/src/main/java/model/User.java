@@ -1,8 +1,9 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import service.UserServiceImpl;
+
+import java.math.BigDecimal;
+import java.util.*;
 
 public class User {
     private String name;
@@ -13,6 +14,7 @@ public class User {
     private List<Order> orders;
     private Order currentOrder;
     private UserRole userRole;
+    private BigDecimal money;
 
     public User(String name, String login, String password, String email) {
         this.name = name;
