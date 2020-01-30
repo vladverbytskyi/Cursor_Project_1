@@ -1,9 +1,9 @@
 package view.impl;
 
 import dao.UserDao;
+import dao.UserDaoFileImpl;
 import dao.UserDaoImpl;
 import model.Order;
-import model.Product;
 import model.User;
 import view.Menu;
 
@@ -12,10 +12,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class MyOrderMenu implements Menu {
-    private UserDao userDao = new UserDaoImpl();
+    private UserDao userDao = new UserDaoFileImpl();
     private String [] itemsOrderMenu = {"1. Show my orders", "9. Back", "0. Exit"};
     private Scanner scanner = new Scanner(System.in);
     private Boolean isWorkLoop;
+
     @Override
     public void show() {
         System.out.println("My orders");

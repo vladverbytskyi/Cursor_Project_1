@@ -1,8 +1,16 @@
 package service.impl;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import model.Order;
 import model.Product;
 import service.ProductService;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import dao.ProductDao;
@@ -12,15 +20,15 @@ import model.Product;
 import java.util.List;
 
 public class ProductServiceImpl implements ProductService {
-    //todo add impl
-    @Override
-    public List<Product> getAllProducts() {
-        return null;
+
+    public List<Product> getAllProducts()
+    {
+        List<Product> productsList = new ArrayList<>();
+        return productsList;
     }
 
     @Override
     public void createProductInDatabase(Product product) {
-
     }
 
     @Override

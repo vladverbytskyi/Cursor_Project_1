@@ -1,26 +1,28 @@
 package model;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 
 import java.util.List;
+import java.util.Random;
 
 public class Order {
-
     private long id;
     private List<PositionItem> itemList;
     private BigDecimal total;
-    private User user;
+    private String user;
     private StatusOrder statusOrder;
 
     public enum StatusOrder{
         COMPLITED,IN_PROCESS,REFUSAL
     }
 
-    public Order(List<PositionItem> itemList, User user, StatusOrder statusOrder) {
+    public Order(){}
+    public Order(List<PositionItem> itemList, String user, StatusOrder statusOrder) {
         this.itemList = itemList;
         this.user = user;
         this.statusOrder = statusOrder;
+        this.total = getTotal();
+        this.id = new Random().nextInt(999999999);
     }
 
     public BigDecimal getTotal() {
@@ -28,7 +30,7 @@ public class Order {
                 itemList.stream()
                         .map(a -> a.subTotal)
                         .reduce(BigDecimal::add)
-                        .get() : null;
+                        .get() : BigDecimal.ZERO;
     }
 
     public long getId() {
@@ -53,7 +55,7 @@ public class Order {
         }
     }
 
-    public User getUser() {
+    public String getUser() {
         return user;
     }
 
@@ -67,9 +69,11 @@ public class Order {
             return "Product=" + item + ", amount=" + amount + ", subTotal=" + subTotal+"\n";
         }
 
+        public PositionItem(){}
         public PositionItem(Product item, int amount) {
             this.item = item;
             this.amount = amount;
+            this.subTotal = getSubTotal();
         }
 
         public Product getItem() {
@@ -87,6 +91,6 @@ public class Order {
   
     @Override
     public String toString() {
-        return "\nOrder id = " + id + ", Owner = " + user.getName() + ", statusOrder = " + statusOrder + '}';
+        return "\nOrder id = " + id + ", Owner = " + user + ", statusOrder = " + statusOrder + '}';
     }
 }

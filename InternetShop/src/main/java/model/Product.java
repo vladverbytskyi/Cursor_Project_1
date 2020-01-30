@@ -13,8 +13,10 @@ public class Product {
     private boolean inStock;
     private int amountInStock;
 
+    public Product(){}
     public Product(String name, String brandName, String type, Integer productId,
                    String description, BigDecimal price, int amountInStock) {
+        super();
         this.name = name;
         this.brandName = brandName;
         this.type = type;

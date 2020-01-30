@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class StartMenu implements Menu {
     private Scanner scanner = new Scanner(System.in);
-    private String[] items = {"1. Login", "2. Register","9. Register", "0. Exit"};
+    private String[] items = {"1. Login", "2. Register","9. Back", "0. Exit"};
 
     @Override
     public void show() {

@@ -1,7 +1,7 @@
 package view.impl;
 
 import service.UserService;
-import service.UserServiceImpl;
+import service.impl.UserServiceImpl;
 import view.Menu;
 
 import java.util.Scanner;

@@ -19,7 +19,7 @@ public class ProductsMenu implements Menu {
 
         if (allProducts != null) {
             final int[] i = {0};
-            allProducts.forEach(a -> System.out.println(i[0]++ + ". " + a.toString()));
+           allProducts.forEach(a -> System.out.println(i[0]++ + ". " + a.toString()));
         }
 
         System.out.println(" Select product: ");
