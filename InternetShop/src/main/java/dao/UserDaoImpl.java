@@ -21,11 +21,6 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public List<User> getAllUsers() {
-        return new ArrayList(users.values());
-    }
-
-    @Override
     public void createUserInDatabase(User user) {
         users.put(user.getLogin(), user);
         System.out.println("User " + user.getLogin() + " added to the database");

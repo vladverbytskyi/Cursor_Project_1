@@ -1,15 +1,25 @@
 package dao;
 
 import model.Product;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class ProductDaoImpl implements ProductDao{
+public class ProductDaoImpl implements ProductDao {
 
     private static Map<Integer, Product> products = new HashMap<>();
 
+    static {
+        products.put(1, new Product("Milk", "Village Milk", "Dairy product", 121,
+                "Very good milk", BigDecimal.valueOf(3.45), 15));
+    }
+
     @Override
-    public void getAllProducts() {
+    public List<Product> getAllProducts() {
+        return new ArrayList(products.values());
     }
 
     @Override
