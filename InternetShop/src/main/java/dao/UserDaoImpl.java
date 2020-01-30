@@ -11,6 +11,15 @@ public class UserDaoImpl implements UserDao {
 
     private static Map<String, User> users = new HashMap<>();
 
+    static {
+        users.put("sudo", new User("sudo", "sudo", "sudo", "sudo@com.com")); //FIXME testing only ,  remove in prod
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return new ArrayList(users.values());
+    }
+
     @Override
     public List<User> getAllUsers() {
         return new ArrayList(users.values());

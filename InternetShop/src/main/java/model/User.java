@@ -1,24 +1,35 @@
 package model;
 
-import java.util.Objects;
+import service.UserServiceImpl;
+
+import java.math.BigDecimal;
+import java.util.*;
 
 public class User {
     private String name;
-    private Integer id;
     private String login;
     private String password;
     private String email;
-    private Bucket bucket;
-    private Order orders;
+    private Boolean statusOrder;
+    private List<Order> orders;
+    private Order currentOrder;
+    private UserRole userRole;
+    private BigDecimal money;
 
-    public User(String name, Integer id, String login, String password, String email) {
+    public User(String name, String login, String password, String email) {
         this.name = name;
-        this.id = id;
         this.login = login;
         this.password = password;
         this.email = email;
-        this.bucket = new Bucket();
-        this.orders = new Order();
+        this.orders = new ArrayList<>();
+    }
+
+    public Boolean getStatusOrder() {
+        return statusOrder;
+    }
+
+    public void setStatusOrder(Boolean statusOrder) {
+        this.statusOrder = statusOrder;
     }
 
     public String getName() {
@@ -27,14 +38,6 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getLogin() {
@@ -61,20 +64,12 @@ public class User {
         this.email = email;
     }
 
-    public Bucket getBucket() {
-        return bucket;
+    public List<Order> getOrders() {
+        return new ArrayList<>(this.orders);
     }
 
-    public void setBucket(Bucket bucket) {
-        this.bucket = bucket;
-    }
-
-    public Order getOrders() {
-        return orders;
-    }
-
-    public void setOrders(Order orders) {
-        this.orders = orders;
+    public void setOrders(Order item) {
+        this.orders.add(item);
     }
 
     @Override
@@ -83,17 +78,19 @@ public class User {
         if (!(o instanceof User)) return false;
         User user = (User) o;
         return Objects.equals(getName(), user.getName()) &&
-                Objects.equals(getId(), user.getId()) &&
                 Objects.equals(getLogin(), user.getLogin()) &&
                 Objects.equals(getPassword(), user.getPassword()) &&
                 Objects.equals(getEmail(), user.getEmail()) &&
-                Objects.equals(getBucket(), user.getBucket()) &&
                 Objects.equals(getOrders(), user.getOrders());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName(), getId(), getLogin(), getPassword(), getEmail(), getBucket(), getOrders());
+        return Objects.hash(getName(), getLogin(), getPassword(), getEmail(), getOrders());
+    }
+
+    enum UserRole {
+        REGURAL, ADMIN
     }
 }
 

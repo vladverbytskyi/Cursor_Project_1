@@ -1,5 +1,6 @@
 package model;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 public class Product {
@@ -8,29 +9,21 @@ public class Product {
     private String type;
     private Integer productId;
     private String description;
-    private Integer price;
+    private BigDecimal price;
     private boolean inStock;
+    private int amountInStock;
 
     public Product(String name, String brandName, String type, Integer productId,
-                   String description, Integer price, boolean inStock) {
+                   String description, BigDecimal price, int amountInStock) {
         this.name = name;
         this.brandName = brandName;
         this.type = type;
         this.productId = productId;
         this.description = description;
         this.price = price;
-        this.inStock = inStock;
+        this.amountInStock = amountInStock;
     }
-
-    public Product(String name) {
-        this.name = name;
-    }
-
-    public Product(String name, String brandName) {
-        this.name = name;
-        this.brandName = brandName;
-    }
-
+  
     public String getName() {
         return name;
     }
@@ -71,11 +64,11 @@ public class Product {
         this.description = description;
     }
 
-    public Integer getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
@@ -104,5 +97,14 @@ public class Product {
     @Override
     public int hashCode() {
         return Objects.hash(getName(), getBrandName(), getType(), getProductId(), getDescription(), getPrice(), isInStock());
+    }
+
+    @Override
+    public String toString() {
+        return "Product: "+ name +
+                ", Brand= " + brandName +
+                ", Type='" + type +
+                ", Description='" + description +
+                ", price=" + price ;
     }
 }
