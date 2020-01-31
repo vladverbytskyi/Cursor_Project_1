@@ -55,9 +55,7 @@ public class OrderDaoFileImpl implements OrderDao {
     private void readWithFile() {
         try {
             InputStream inputStream = new FileInputStream(file);
-            TypeReference<Map<Long, Order>> typeReference = new TypeReference<>() {
-            };
-            ordersMap = mapper.readValue(inputStream, typeReference);
+            ordersMap = mapper.readValue(inputStream, Map.class);
             inputStream.close();
         } catch (IOException e) {
             e.printStackTrace();
