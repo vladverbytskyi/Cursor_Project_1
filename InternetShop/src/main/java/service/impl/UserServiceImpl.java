@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService {
             m.add(positionItem1);
 
             Order order = new Order(m,user.getLogin(), Order.StatusOrder.IN_PROCESS);
-            user.setOrders(order);
+            user.setOrders(null);
             orderDao.createOrderInDatabase(order);
         productDao.createProductInDatabase(product1);
         productDao.createProductInDatabase(product);
