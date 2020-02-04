@@ -22,22 +22,7 @@ public class UserDaoFileImpl implements UserDao {
     private ObjectMapper mapper = new ObjectMapper();
     private File file = new File("InternetShop/src/main/java/resource/users.json");
     private Map<String, User> usersMap = new LinkedHashMap<>();
-    {
-        User u = new User("Igor", "javam", "root", "@");
-        u.setOrders(Arrays.asList(new Order(null, u.getLogin(), Order.StatusOrder.IN_PROCESS)));
-        usersMap.put("1", u);
-        mapper.configure(
-                DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-    }
 
-
-    public static void main(String[] args) {
-
-
-        new UserDaoFileImpl().writeIntoFile();
-        new UserDaoFileImpl().readWithFile();
-
-    }
     @Override
     public List<User> getAllUsers() {
         readWithFile();
