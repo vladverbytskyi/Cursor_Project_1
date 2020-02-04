@@ -1,48 +1,56 @@
 package service.impl;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import model.Order;
+import dao.ProductDao;
+import dao.ProductDaoFileImpl;
 import model.Product;
 import service.ProductService;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
 
-import dao.ProductDao;
-import dao.ProductDaoImpl;
-import model.Product;
-
-import java.util.List;
 
 public class ProductServiceImpl implements ProductService {
+    ProductDao productDao = new ProductDaoFileImpl();
 
-    public List<Product> getAllProducts()
-    {
-        List<Product> productsList = new ArrayList<>();
-        return productsList;
+    public List<Product> getAllProducts() {
+        List<Product> allProducts = productDao.getAllProducts();
+        if (allProducts.isEmpty()) {
+            System.out.println("We don't have any Products");
+        }
+        return allProducts;
     }
 
     @Override
-    public void createProductInDatabase(Product product) {
+    public boolean createProductInDatabase(Product product) {
+        boolean isCreate = false;
+        productDao.createProductInDatabase(product);
+        if (productDao.getProductById(product.getProductId()) != null) {
+            isCreate = true;
+        }
+        return isCreate;
     }
 
     @Override
     public Product getProductById(Integer productId) {
-        return null;
+        return productDao.getProductById(productId);
     }
 
     @Override
-    public void updateProductInDatabase(Product product) {
-
+    public boolean updateProductInDatabase(Product product) {
+        boolean isUpdate = false;
+        productDao.updateProductInDatabase(product);
+        if (productDao.getProductById(product.getProductId()) != null) {
+            isUpdate = true;
+        }
+        return isUpdate;
     }
 
     @Override
-    public void deleteProductFromDatabase(Product product) {
-
+    public boolean deleteProductFromDatabase(Product product) {
+        boolean isDelete = false;
+        productDao.deleteProductFromDatabase(product);
+        if (productDao.getProductById(product.getProductId()) == null) {
+            isDelete = true;
+        }
+        return isDelete;
     }
 }

@@ -1,5 +1,7 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.math.BigDecimal;
 import java.util.*;
 
@@ -65,12 +67,11 @@ public class User {
     }
 
     public List<Order> getOrders() {
-        return new ArrayList<>(this.orders);
+        return orders;
     }
 
-    public void setOrders(Order item) {
-        this.orders.add(item);
-        this.currentOrder = item;
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 
     @Override

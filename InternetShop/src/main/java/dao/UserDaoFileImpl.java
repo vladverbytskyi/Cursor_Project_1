@@ -1,6 +1,6 @@
 package dao;
 
-import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import model.User;
 
@@ -12,6 +12,9 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class UserDaoFileImpl implements UserDao {
     private ObjectMapper mapper = new ObjectMapper();
@@ -27,13 +30,15 @@ public class UserDaoFileImpl implements UserDao {
     @Override
     public void createUserInDatabase(User user) {
         readWithFile();
-        usersMap.put(user.getLogin(),user);
+        usersMap.put(user.getLogin(), user);
         writeIntoFile();
     }
 
     @Override
     public User getUserByLogin(String login) {
         readWithFile();
+        System.out.println(usersMap.keySet());
+        System.out.println(usersMap.values());
         return usersMap.get(login);
     }
 
@@ -41,7 +46,7 @@ public class UserDaoFileImpl implements UserDao {
     public void updateUserInDatabase(User user) {
         readWithFile();
         usersMap.remove(user.getLogin());
-        usersMap.put(user.getLogin(),user);
+        usersMap.put(user.getLogin(), user);
         writeIntoFile();
     }
 
@@ -54,18 +59,21 @@ public class UserDaoFileImpl implements UserDao {
 
     private void readWithFile() {
         try {
+            mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             InputStream inputStream = new FileInputStream(file);
-            TypeReference<Map<String, User>> typeReference = new TypeReference<>(){};
-            usersMap = mapper.readValue(inputStream, typeReference);
+            User[] users = mapper.readValue(inputStream, User[].class);
+            usersMap = Stream.of(users).collect(Collectors.toMap(User::getName, Function.identity()));
             inputStream.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
-    private void writeIntoFile(){
+    private void writeIntoFile() {
         try {
-            mapper.writeValue(file, usersMap);
+            mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+            mapper.writeValue(file, usersMap.values());
         } catch (IOException e) {
             e.printStackTrace();
         }

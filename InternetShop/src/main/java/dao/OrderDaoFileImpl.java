@@ -1,6 +1,6 @@
 package dao;
 
-import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import model.Order;
 
@@ -12,11 +12,14 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class OrderDaoFileImpl implements OrderDao {
     private ObjectMapper mapper = new ObjectMapper();
     private File file = new File("InternetShop/src/main/java/resource/orders.json");
-    private Map<Long,Order> ordersMap = new LinkedHashMap<>();
+    private Map<Long, Order> ordersMap = new LinkedHashMap<>();
 
     @Override
     public List<Order> getAllOrders() {
@@ -27,7 +30,7 @@ public class OrderDaoFileImpl implements OrderDao {
     @Override
     public void createOrderInDatabase(Order order) {
         readWithFile();
-        ordersMap.put(order.getId(),order);
+        ordersMap.put(order.getId(), order);
         writeIntoFile();
     }
 
@@ -41,7 +44,7 @@ public class OrderDaoFileImpl implements OrderDao {
     public void updateOrderInDatabase(Order order) {
         readWithFile();
         ordersMap.remove(order.getId());
-        ordersMap.put(order.getId(),order);
+        ordersMap.put(order.getId(), order);
         writeIntoFile();
     }
 
@@ -54,19 +57,20 @@ public class OrderDaoFileImpl implements OrderDao {
 
     private void readWithFile() {
         try {
+            mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             InputStream inputStream = new FileInputStream(file);
-            TypeReference<Map<Long, Order>> typeReference = new TypeReference<>() {
-            };
-            ordersMap = mapper.readValue(inputStream, typeReference);
+            Order[] orders = mapper.readValue(inputStream, Order[].class);
+            ordersMap = Stream.of(orders).collect(Collectors.toMap(Order::getId, Function.identity()));
             inputStream.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void writeIntoFile(){
+    private void writeIntoFile() {
         try {
-            mapper.writeValue(file, ordersMap);
+            mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+            mapper.writeValue(file, ordersMap.values());
         } catch (IOException e) {
             e.printStackTrace();
         }
