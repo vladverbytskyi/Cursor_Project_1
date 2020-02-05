@@ -1,6 +1,7 @@
 package dao;
 
 import model.Order;
+import model.Product;
 
 import java.util.List;
 

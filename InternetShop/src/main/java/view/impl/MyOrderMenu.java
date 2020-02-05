@@ -1,9 +1,8 @@
 package view.impl;
 
 import dao.UserDao;
-import dao.UserDaoImpl;
+import dao.UserDaoFileImpl;
 import model.Order;
-import model.Product;
 import model.User;
 import view.Menu;
 
@@ -12,10 +11,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class MyOrderMenu implements Menu {
-    private UserDao userDao = new UserDaoImpl();
-    private String [] itemsOrderMenu = {"1. Show my orders", "9. Back", "0. Exit"};
+    private UserDao userDao = new UserDaoFileImpl();
+    private String[] itemsOrderMenu = {"1. Show my orders", "9. Back", "0. Exit"};
     private Scanner scanner = new Scanner(System.in);
     private Boolean isWorkLoop;
+
     @Override
     public void show() {
         System.out.println("My orders");
@@ -47,16 +47,16 @@ public class MyOrderMenu implements Menu {
         System.exit(0);
     }
 
-    private void printUserOrder(){
+    private void printUserOrder() {
         User userWithDatabase = userDao.getUserByLogin(LoginMenu.USER_LOGIN);
-        System.out.println(LoginMenu.USER_LOGIN);
-        if (userWithDatabase == null){
+        if (userWithDatabase == null) {
             System.out.println("Doesn't find user with this nick");
-        }else if(userWithDatabase.getOrders() == null){
+        } else if (userWithDatabase.getOrders().size() == 0) {
             System.out.println("Order List is empty");
-        } else{
+        } else {
             List<Order> userOrders = new ArrayList<>(userWithDatabase.getOrders());
-            for(Order item : userOrders){
+            System.out.println(userWithDatabase.getOrders().size());
+            for (Order item : userOrders) {
                 System.out.println(item);
                 item.printAllItem();
             }

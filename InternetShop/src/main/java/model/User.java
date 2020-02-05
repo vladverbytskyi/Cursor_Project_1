@@ -1,6 +1,6 @@
 package model;
 
-import service.UserServiceImpl;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -10,13 +10,15 @@ public class User {
     private String login;
     private String password;
     private String email;
-    private Boolean statusOrder;
+    private Boolean statusUser;
     private List<Order> orders;
     private Order currentOrder;
     private UserRole userRole;
     private BigDecimal money;
 
+    public User(){}
     public User(String name, String login, String password, String email) {
+        super();
         this.name = name;
         this.login = login;
         this.password = password;
@@ -25,11 +27,11 @@ public class User {
     }
 
     public Boolean getStatusOrder() {
-        return statusOrder;
+        return statusUser;
     }
 
     public void setStatusOrder(Boolean statusOrder) {
-        this.statusOrder = statusOrder;
+        this.statusUser = statusOrder;
     }
 
     public String getName() {
@@ -65,11 +67,11 @@ public class User {
     }
 
     public List<Order> getOrders() {
-        return new ArrayList<>(this.orders);
+        return orders;
     }
 
-    public void setOrders(Order item) {
-        this.orders.add(item);
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 
     @Override
