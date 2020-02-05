@@ -42,8 +42,6 @@ public class UserDaoFileImpl implements UserDao {
 
     @Override
     public User getUserByLogin(String login) {
-        System.out.println(usersMap.keySet());
-        System.out.println(usersMap.values());
         return usersMap.get(login);
     }
 
