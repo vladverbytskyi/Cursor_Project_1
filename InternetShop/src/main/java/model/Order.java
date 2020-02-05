@@ -3,9 +3,9 @@ package model;
 import java.math.BigDecimal;
 
 import java.util.List;
-import java.util.Random;
 
 public class Order {
+    private static long IdGenerator = 1;
     private long id;
     private List<PositionItem> itemList;
     private BigDecimal total;
@@ -22,7 +22,7 @@ public class Order {
         this.user = user;
         this.statusOrder = statusOrder;
         this.total = getTotal();
-        this.id = new Random().nextInt(999999999);
+        this.id = ++IdGenerator;
     }
 
     public BigDecimal getTotal() {

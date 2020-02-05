@@ -17,47 +17,47 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class OrderDaoFileImpl implements OrderDao {
-    private ObjectMapper mapper = new ObjectMapper();
-    private File file = new File("InternetShop/src/main/java/resource/orders.json");
-    private Map<Long, Order> ordersMap = new LinkedHashMap<>();
+    private static ObjectMapper mapper = new ObjectMapper();
+    private static File file = new File("InternetShop/src/main/java/resource/orders.json");
+    private static Map<Long, Order> ordersMap = new LinkedHashMap<>();
+
+    public OrderDaoFileImpl() {
+        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+    }
+
+    static {
+        readWithFile();
+        Runtime.getRuntime().addShutdownHook(new Thread(OrderDaoFileImpl::writeIntoFile));
+    }
 
     @Override
     public List<Order> getAllOrders() {
-        readWithFile();
         return new ArrayList<>(ordersMap.values());
     }
 
     @Override
     public void createOrderInDatabase(Order order) {
-        readWithFile();
         ordersMap.put(order.getId(), order);
-        writeIntoFile();
     }
 
     @Override
     public Order getOrderById(Long id) {
-        readWithFile();
         return ordersMap.get(id);
     }
 
     @Override
     public void updateOrderInDatabase(Order order) {
-        readWithFile();
         ordersMap.remove(order.getId());
         ordersMap.put(order.getId(), order);
-        writeIntoFile();
     }
 
     @Override
     public void deleteOrderFromDatabase(Order order) {
-        readWithFile();
         ordersMap.remove(order.getId());
-        writeIntoFile();
     }
 
-    private void readWithFile() {
+    private static void readWithFile() {
         try {
-            mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             InputStream inputStream = new FileInputStream(file);
             Order[] orders = mapper.readValue(inputStream, Order[].class);
             ordersMap = Stream.of(orders).collect(Collectors.toMap(Order::getId, Function.identity()));
@@ -67,12 +67,12 @@ public class OrderDaoFileImpl implements OrderDao {
         }
     }
 
-    private void writeIntoFile() {
+    private static void writeIntoFile() {
         try {
-            mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             mapper.writeValue(file, ordersMap.values());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 }
