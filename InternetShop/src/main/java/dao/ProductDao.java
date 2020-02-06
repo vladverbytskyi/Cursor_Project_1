@@ -1,8 +1,18 @@
 package dao;
 
-/**
- * Created by Igor on 10/8/2019.
- */
+import model.Product;
+
+import java.util.List;
+
+
 public interface ProductDao {
-    void getAllProducts();
+    List<Product> getAllProducts();
+
+    void createProductInDatabase(Product product);
+
+    Product getProductById(Integer productId);
+
+    void updateProductInDatabase(Product product);
+
+    void deleteProductFromDatabase(Product product);
 }

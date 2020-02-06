@@ -1,7 +1,7 @@
-import view.impl.LoginMenu;
+import view.impl.StartMenu;
 
 public class Main {
     public static void main(String[] args) {
-        new LoginMenu().show();
+        new StartMenu().show();
     }
 }

@@ -1,11 +1,21 @@
 package service;
 
+import model.User;
+
+import java.util.List;
+
 public interface UserService {
-    /**
-     * Used to login a user
-     * @param username user name
-     * @param password user password
-     * @return outcome of login - success or not
-     */
+    List<User> getAllUsers();
+
+    boolean createUserInDatabase(User user);
+
+    User getUserByLogin(String login);
+
+    boolean updateUserInDatabase(User user);
+
+    boolean deleteUserFromDatabase(User user);
+
     boolean login(String username, String password);
+
+    boolean registration(String name, String login, String password, String email);
 }
